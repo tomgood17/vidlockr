@@ -53,6 +53,16 @@ let auth = new Vue({
     login() {
       webAuth.authorize()
     },
+    contact() {
+      window.location.pathname = '/contact'
+    },
+    buy() {
+      window.location.pathname = '/buy'
+    },
+    sell() {
+      window.location.pathname = '/sell'
+    },
+    
     logout() {
       return new Promise((resolve, reject) => { 
         localStorage.removeItem('access_token')

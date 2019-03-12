@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import Callback from '@/views/Callback.vue'
+import Contact from '@/views/Contact.vue'
+import Sell from '@/views/Sell.vue'
+import Buy from '@/views/Buy.vue'
 
 Vue.use(Router)
 
@@ -17,7 +20,22 @@ const router = new Router({
       path: '/callback',
       name: 'callback',
       component: Callback
-    }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact
+    },
+    {
+      path: '/buy',
+      name: 'buy',
+      component: Buy
+    },
+    {
+      path: '/sell',
+      name: 'sell',
+      component: Sell
+    },
   ]
 })
 

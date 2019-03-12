@@ -2,14 +2,15 @@
   <div class="dashboard">
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="/">
-        <img href="localhost:8080/" src="https://i.imgur.com/HwV9wI6.png" width="40" height="40">
+        <img src="https://i.imgur.com/HwV9wI6.png" width="40" height="40">
       </a>
-      
-      <div class="wrap">
-        <div class="search">
-          <input type="text" class="searchTerm" placeholder="e.g. animals">
-        </div>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div class="wrap">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="e.g. animals">
       </div>
+    </div>
 
       <div>
         <button type="button" style="margin-right:10px;" class="btn btn-outline-secondary btn-sm" @click="$auth.contact()">Contact</button>
@@ -22,32 +23,18 @@
         <button type="button" class="btn btn-outline-secondary btn-sm" @click="$auth.logout()">Logout</button>
       </div>
     </nav>
-  
-    <div class="jumbotron">
+
+     <div class="jumbotron">
       <div class="container">
         <h1 class="display-4">Hello, {{$auth.user.name}}!</h1>
-        <p class="lead">We hope you liked this tutorial and can now start building new astounding projects from this start point. If you're interested in what we're doing besides tech tutorials check out <a href="https://www.storyblok.com">@storyblok</a>.</p>
+        <p class="lead">This is the Contact page</p>
         <hr class="my-4">
-        <p>TBH, I'm sure this project of yours would look great with a landing page filled with content composed in <a href="https://www.storyblok.com">Storyblok</a> 🎉</p>
-        
+            <p>This is a test description of the contact page with a <a href="https://www.google.com">link</a></p>
+
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="https://www.storyblok.com/getting-started" target="_blank" role="button">Getting Started</a>
           <a class="btn btn-secondary btn-lg" href="https://twitter.com/home?status=Have%20a%20look%20at%20%40storyblok%20and%20their%20%40vuejs%20%2B%20%40auth0%20tutorial%3A%20https%3A//www.storyblok.com/tp/how-to-auth0-vuejs-authentication" target="_blank" role="button">Tweet it</a>
         </p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="card-columns">
-
-        <a class="card" :href="getStoryLink(story)" target="_blank" v-for="story in stories">
-          <img class="card-img-top" :src="story.content.image" :alt="story.content.image_alt">
-          <div class="card-body">
-            <h5 class="card-title">{{story.content.title}}</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </a>
-        
       </div>
     </div>
 
@@ -79,6 +66,7 @@ export default {
 <style scoped>
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 @import 'styles.css';
+
 .btn-primary {
   background: #468f65;
   border: 1px solid #468f65;
