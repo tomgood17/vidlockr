@@ -62,7 +62,7 @@ let auth = new Vue({
     sell() {
       window.location.pathname = '/sell'
     },
-    
+
     logout() {
       return new Promise((resolve, reject) => { 
         localStorage.removeItem('access_token')

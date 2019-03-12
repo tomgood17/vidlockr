@@ -1,15 +1,26 @@
 <template>
   <div class="dashboard">
     <nav class="navbar navbar-dark bg-dark">
+    
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
+            <a href="/">Home</a>
+            <a href="#">Upload</a>
+            <a href="#">Trending</a>
+            <a href="#">Create account</a>
+          </div>
+
+      <span style="font-size:20px;cursor:pointer" @click="openNav()">&#9776;</span>
+
       <a class="navbar-brand" href="/">
-        <img src="https://i.imgur.com/HwV9wI6.png" width="40" height="40">
+        <img href="localhost:8080/" src="https://i.imgur.com/HwV9wI6.png" width="40" height="40">
       </a>
       
-    <div class="wrap">
-      <div class="search">
-        <input type="text" class="searchTerm" placeholder="e.g. animals">
+      <div class="wrap">
+        <div class="search">
+          <input type="text" class="searchTerm" placeholder="e.g. animals">
+        </div>
       </div>
-    </div>
 
       <div>
         <button type="button" style="margin-right:10px;" class="btn btn-outline-secondary btn-sm" @click="$auth.contact()">Contact</button>
@@ -56,6 +67,14 @@ export default {
   methods: {
     getStoryLink(story) {
       return `https://www.storyblok.com/${story.full_slug}`
+    },
+    openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      console.log('opened nav menu')
+    },
+    closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      console.log('closed nav menu')
     }
   }
 }
