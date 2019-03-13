@@ -1,14 +1,14 @@
 <template>
   <div class="dashboard">
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-light">
     
           <div id="mySidenav" class="sidenav">
           <a class="logohome" @click="homedirect()">
-            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" width="70" height="60" top="30px"></a>
+            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px"></a>
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
             <a href="/">Home</a>
-            <a href="#">Upload</a>
+            <a href="/upload">Upload</a>
             <a href="#">Trending</a>
             <a href="#">Create account</a>
           </div>
@@ -16,7 +16,7 @@
       <span style="font-size:20px;cursor:pointer" @click="openNav()">&#9776;</span>
 
       <a class="navbar-brand" href="/">
-        <img href="localhost:8080/" src="https://i.imgur.com/HwV9wI6.png" width="40" height="40">
+        <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" width="70" height="60">
       </a>
       
       <div class="wrap">

@@ -5,6 +5,7 @@ import Callback from '@/views/Callback.vue'
 import Contact from '@/views/Contact.vue'
 import Sell from '@/views/Sell.vue'
 import Buy from '@/views/Buy.vue'
+import Upload from '@/views/Upload.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ const router = new Router({
       name: 'sell',
       component: Sell
     },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: Upload
+    }
   ]
 })
 

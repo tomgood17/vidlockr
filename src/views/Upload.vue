@@ -3,7 +3,7 @@
     <nav class="navbar navbar-dark bg-dark">
     
           <div id="mySidenav" class="sidenav">
-          <a class="logohome" @click="homedirect()">
+					<a class="logohome" @click="homedirect()">
             <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px"></a>
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
@@ -37,12 +37,12 @@
       </div>
     </nav>
 
-    <div class="jumbotron">
+     <div class="jumbotron">
       <div class="container">
         <h1 class="display-4">Hello, {{$auth.user.name}}!</h1>
-        <p class="lead">This is the Sell page</p>
+        <p class="lead">This is the Upload page</p>
         <hr class="my-4">
-        <p>This is a test description of the sell page with a <a href="https://www.google.com">link</a></p>
+        <p>This is a test description of the upload page with a <a href="https://www.google.com">link</a></p>
         
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="https://www.storyblok.com/getting-started" target="_blank" role="button">Getting Started</a>
@@ -50,7 +50,6 @@
         </p>
       </div>
     </div>
-    
   </div>
 </template>
 
