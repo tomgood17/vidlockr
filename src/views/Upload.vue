@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard">
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-light">
     
           <div id="mySidenav" class="sidenav">
-					<a class="logohome" @click="homedirect()">
+          <a class="logohome" @click="homedirect()">
             <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px"></a>
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
@@ -35,21 +35,71 @@
         <span class="text-muted font-weight-light px-2">{{$auth.user.name}}</span>
         <button type="button" class="btn btn-outline-secondary btn-sm" @click="$auth.logout()">Logout</button>
       </div>
-    </nav>
+      </nav>
 
-     <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-4">Hello, {{$auth.user.name}}!</h1>
-        <p class="lead">This is the Upload page</p>
-        <hr class="my-4">
-        <p>This is a test description of the upload page with a <a href="https://www.google.com">link</a></p>
-        
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="https://www.storyblok.com/getting-started" target="_blank" role="button">Getting Started</a>
-          <a class="btn btn-secondary btn-lg" href="https://twitter.com/home?status=Have%20a%20look%20at%20%40storyblok%20and%20their%20%40vuejs%20%2B%20%40auth0%20tutorial%3A%20https%3A//www.storyblok.com/tp/how-to-auth0-vuejs-authentication" target="_blank" role="button">Tweet it</a>
-        </p>
-      </div>
-    </div>
+
+
+
+    <center>
+      <div className="row">
+		<div className="col-md-offset-2 col-md-8">
+		  <div className="panel panel-default">
+            <div className="panel-heading">
+
+			  <div className="panel-heading">
+			    <h2 className="panel-title text-center">
+			      <span className="glyphicon glyphicon-upload"></span> Upload a Product
+			    </h2>
+			  </div>
+    
+
+                <div>
+                    <label>Name</label>
+                    <input placeholder="Enter video title"/>
+                </div>
+
+
+                <div>
+                    <label>Description</label>
+                    <input placeholder="Enter video description"/>
+                </div>
+
+
+                <div>
+                    <label>Price</label>
+                    <input placeholder="Enter video price"/>
+                </div>
+
+
+                <div>
+                    <label>Category</label>
+                    <select id="category-list">
+                        {this.props.categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                    </select>
+                </div>
+
+
+                <div>
+                    <label>Video</label>
+                    <div>
+                    <button @click="uploadImg()"> Upload </button>   
+                    </div>
+                </div>
+
+
+                <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
+
+            </div>
+          </div>
+		</div>
+	  </div>
+
+    </center>
+
+
+
+
+
   </div>
 </template>
 
@@ -68,6 +118,26 @@ export default {
     })
   },
   methods: {
+    uploadImg() {
+      console.log('testing');
+      const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
+      const options = {
+        onUploadDone: (res) => console.log(res),
+      };
+      client.picker(options).open();
+    },
+    submitCharacter(next) {
+      const id = next;
+      const name = document.getElementById('name').value;
+      const handler = document.getElementById('button-upload').dataset.handler;
+      const price = document.getElementById('price').value;
+      const description = document.getElementById('description').value;
+      const rating = Math.floor(Math.random() * 5) + 1; //Just a random number
+      const category = document.getElementById('category-list').value;
+      const product = {id, name, handler, price, description, rating, category};
+      this.props.addProduct(product);
+      document.getElementById("product-form").reset();
+    },
     getStoryLink(story) {
       return `https://www.storyblok.com/${story.full_slug}`
     },
@@ -78,7 +148,7 @@ export default {
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
       console.log('closed nav menu')
-    }
+    },
   }
 }
 </script>
@@ -86,6 +156,8 @@ export default {
 <style scoped>
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 @import 'styles.css';
+@import 'uploadstyle.css';
+
 .btn-primary {
   background: #468f65;
   border: 1px solid #468f65;

@@ -8,7 +8,7 @@
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
             <a href="/">Home</a>
-            <a href="#">Upload</a>
+            <a href="/upload">Upload</a>
             <a href="#">Trending</a>
             <a href="#">Create account</a>
           </div>
