@@ -4,7 +4,7 @@
     
           <div id="mySidenav" class="sidenav">
           <a class="logohome" @click="homedirect()">
-            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px"></a>
+            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px">
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
             <a href="/">Home</a>
@@ -53,41 +53,41 @@
 			  </div>
     
 
+            <div>
+                <label>Name</label>
+                <input placeholder="Enter video title"/>
+            </div>
+
+
+            <div>
+                <label>Description</label>
+                <input placeholder="Enter video description"/>
+            </div>
+
+
+            <div>
+                <label>Price</label>
+                <input placeholder="Enter video price"/>
+            </div>
+
+
+            <div>
+                <label>Category</label>
+                <select id="category-list">
+                    {this.props.categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                </select>
+            </div>
+
+
+            <div>
+                <label>Video</label>
                 <div>
-                    <label>Name</label>
-                    <input placeholder="Enter video title"/>
+                <button @click="uploadVid()"> Upload </button>   
                 </div>
+            </div>
 
 
-                <div>
-                    <label>Description</label>
-                    <input placeholder="Enter video description"/>
-                </div>
-
-
-                <div>
-                    <label>Price</label>
-                    <input placeholder="Enter video price"/>
-                </div>
-
-
-                <div>
-                    <label>Category</label>
-                    <select id="category-list">
-                        {this.props.categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
-                </div>
-
-
-                <div>
-                    <label>Video</label>
-                    <div>
-                    <button @click="uploadImg()"> Upload </button>   
-                    </div>
-                </div>
-
-
-                <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
+            <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
 
             </div>
           </div>
@@ -118,8 +118,8 @@ export default {
     })
   },
   methods: {
-    uploadImg() {
-      console.log('testing');
+    uploadVid() {
+      console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
         onUploadDone: (res) => console.log(res),

@@ -4,7 +4,7 @@
     
           <div id="mySidenav" class="sidenav">
           <a class="logohome" @click="homedirect()">
-            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px"></a>
+            <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px">
           </a>
             <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&#9776;</a>
             <a href="/">Home</a>
@@ -36,7 +36,8 @@
         <button type="button" class="btn btn-outline-secondary btn-sm" @click="$auth.logout()">Logout</button>
       </div>
     </nav>
-  
+
+
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-4">Hello, {{$auth.user.name}}!</h1>
@@ -51,22 +52,12 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="card-columns">
 
-        <a class="card" :href="getStoryLink(story)" target="_blank" v-for="story in stories">
-          <img class="card-img-top" :src="story.content.image" :alt="story.content.image_alt">
-          <div class="card-body">
-            <h5 class="card-title">{{story.content.title}}</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </a>
-        
-      </div>
-    </div>
+    
 
   </div>
 </template>
+
 
 <script>
 import axios from 'axios'
@@ -96,7 +87,7 @@ export default {
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
       console.log('closed nav menu')
-    }
+    },
   }
 }
 
