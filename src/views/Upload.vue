@@ -75,6 +75,7 @@
                                             <option value="sport">Sport</option>
                                             <option value="politics">Politics & Business</option>
                                             <option value="celebrity">Celebrity</option>
+                                            <option value="food">Food & Recipes</option>
                                             <option value="animals">Animals</option>
                                             <option value="travel">Travel</option>
                                             <option value="entertainment">Entertainment & Arts</option>
@@ -96,7 +97,7 @@
                     <button @click="uploadVid()"> Upload </button>   
                 </div>
 
-                <input type="checkbox" name="checkbox">I have read and agree to the terms and conditions<br>
+                <input type="checkbox" name="checkbox">I have read and agreed to the terms and conditions<br>
 
                 <div>
                     <button type="button" @click=this.submitCharacter(this.props.productListSize)> Submit </button>
