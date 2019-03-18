@@ -53,15 +53,21 @@
     </div>
 
 
-    
+<div style="position:relative; padding-bottom:56.25%; overflow:hidden;">
+  <iframe src="https://cdn.jwplayer.com/players/m9ZCJev9-1qYPSJWc.html" width="25%" height="25%" frameborder="0" scrolling="auto" allowfullscreen style="position:absolute;">
+  </iframe>
+  </div>
+
 
   </div>
 </template>
 
 
+
+
 <script>
 import axios from 'axios'
-
+ 
 export default {
   data () {
     return {

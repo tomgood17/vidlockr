@@ -1,49 +1,84 @@
-html, body, div {
-	font-family: 'Montserrat', sans-serif;
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
 }
-hr {
-	border-color: #ddd;
+.step-wrapper {
+  padding: 20px 0;
+  display: none;
 }
-.btn-filestack {
-	background-color: #EE4632;
-	border-color: #EE4632;
+.step-wrapper.active {
+  display: block;
 }
-.btn-filestack, .btn-filestack:hover {
-	color: #FFF;
+.step-indicator {
+  border-collapse: separate;
+  display: table;
+  margin-left: 0px;
+  position: relative;
+  table-layout: fixed;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 0;
+  padding-top: 20px;
 }
-.btn-filestack:hover {
-	background-color: #db2812;
+.step-indicator li {
+  display: table-cell;
+  position: relative;
+  float: none;
+  padding: 0;
+  width: 1%;
 }
-.navbar-inverse {
-	background-color: #283A46;
-    border-bottom-color: #8D98A0;
+.step-indicator li:after {
+  background-color: #ccc;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  top: 32px;
 }
-.navbar-brand {
-	color: #FFF !important;
+.step-indicator li:after {
+  left: 50%;
 }
-.navbar-nav li a{
-	color:#BAC3C9 !important;
+.step-indicator li:last-child:after {
+  display: none;
 }
-
-.btn-cart, .btn-cart:active {
-	background-color: transparent;
-    border-color: #1B998B;
-    color: #1B998B;
-    border-radius: 2em;
-    padding: 0.5em 3em;
+.step-indicator li.active .step {
+  border-color: #4183d7;
+  color: #4183d7;
 }
-.btn-cart:hover {
-	background-color: transparent;
-    border-color: #1B998B;
-    color: #0c423c;
-    text-decoration:underline;
-    border-radius: 2em;
-    padding: 0.5em 3em;
+.step-indicator li.active .caption {
+  color: #4183d7;
 }
-.category-active {
-	background-color: #f5f5f5;
+.step-indicator li.complete:after {
+  background-color: #87d37c;
 }
-
-#btn-checkout {
-	color:white !important;
+.step-indicator li.complete .step {
+  border-color: #87d37c;
+  color: #87d37c;
+}
+.step-indicator li.complete .caption {
+  color: #87d37c;
+}
+.step-indicator .step {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  color: #ccc;
+  font-size: 24px;
+  height: 64px;
+  line-height: 64px;
+  margin: 0 auto;
+  position: relative;
+  width: 64px;
+  z-index: 1;
+}
+.step-indicator .step:hover {
+  cursor: pointer;
+}
+.step-indicator .caption {
+  color: #ccc;
+  padding: 11px 16px;
 }

@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard">
     <nav class="navbar navbar-light bg-light">
-    
           <div id="mySidenav" class="sidenav">
           <a class="logohome" @click="homedirect()">
             <img href="localhost:8080/" src="https://i.imgur.com/L61RNhD.png" @click="homedirect()" width="70" height="60" top="30px">
@@ -36,9 +35,7 @@
         <button type="button" class="btn btn-outline-secondary btn-sm" @click="$auth.logout()">Logout</button>
       </div>
       </nav>
-
-
-
+      
 
     <center>
       <div className="row">
@@ -46,61 +43,24 @@
 		  <div className="panel panel-default">
             <div className="panel-heading">
 
-			  <div className="panel-heading">
-			    <h2 className="panel-title text-center">
-			      <span className="glyphicon glyphicon-upload"></span> Upload a Product
-			    </h2>
-			  </div>
-    
-
-            <div>
-                <label>Name</label>
-                <input placeholder="Enter video title"/>
-            </div>
-
-
-            <div>
-                <label>Description</label>
-                <input placeholder="Enter video description"/>
-            </div>
-
-
-            <div>
-                <label>Price</label>
-                <input placeholder="Enter video price"/>
-            </div>
-
-
-            <div>
-                <label>Category</label>
-                <select id="category-list">
-                    {this.props.categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                </select>
-            </div>
-
-
-            <div>
-                <label>Video</label>
                 <div>
-                <button @click="uploadVid()"> Upload </button>   
+                    <button @click="uploadVid()"> Upload </button>   
                 </div>
-            </div>
 
-
-            <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
+                <div>
+                    <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
+                </div>
 
             </div>
           </div>
-		</div>
-	  </div>
-
+	    </div>	
+      </div>
     </center>
 
 
 
 
-
-  </div>
+</div>
 </template>
 
 <script>
@@ -122,6 +82,10 @@ export default {
       console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
+        storeTo: {
+        location: 's3',
+        access: 'public'
+      },
         onUploadDone: (res) => console.log(res),
       };
       client.picker(options).open();
@@ -130,11 +94,9 @@ export default {
       const id = next;
       const name = document.getElementById('name').value;
       const handler = document.getElementById('button-upload').dataset.handler;
-      const price = document.getElementById('price').value;
       const description = document.getElementById('description').value;
-      const rating = Math.floor(Math.random() * 5) + 1; //Just a random number
       const category = document.getElementById('category-list').value;
-      const product = {id, name, handler, price, description, rating, category};
+      const product = {id, name, handler, description, category};
       this.props.addProduct(product);
       document.getElementById("product-form").reset();
     },
