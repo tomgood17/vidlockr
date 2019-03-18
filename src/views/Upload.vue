@@ -43,13 +43,65 @@
 		  <div className="panel panel-default">
             <div className="panel-heading">
 
+
+								<form name="product-form" id="product-form" noValidate>
+									<div className="form-group">
+										<label htmlFor="name">Title</label>
+										<input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
+									</div>
+									
+									<div className="form-group">
+										<label htmlFor="description">Description</label>
+										<input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
+									</div>
+
+                                    <div className="form-group">
+										<label htmlFor="description">Tags</label>
+										<input id="description" type="text" className="form-control" placeholder="Enter the video tags" required/>
+									</div>
+
+                                    <div className="form-group">
+										<label htmlFor="description">Location</label>
+										<input id="description" type="text" className="form-control" placeholder="Enter the video location" required/>
+									</div>
+
+                                    
+
+
+									<div className="form-group">
+                                        <label htmlFor="description">Categories</label>
+										<select>
+                                          <optgroup label="Categories">
+                                            <option value="sport">Sport</option>
+                                            <option value="politics">Politics & Business</option>
+                                            <option value="celebrity">Celebrity</option>
+                                            <option value="animals">Animals</option>
+                                            <option value="travel">Travel</option>
+                                            <option value="entertainment">Entertainment & Arts</option>
+                                            <option value="science">Science & Technology</option>
+                                            <option value="crime">Crime & Accidents</option>
+                                            <option value="charity">Charity & Causes</option>
+                                            <option value="disaster">Conflict & Disaster</option>
+                                            <option value="health">Health & Education</option>
+                                            <option value="weather">Weather & Nature</option>
+                                            <option value="other">Other</option>
+                                          </optgroup>
+                                        </select>
+									</div> 
+                                </form>   
+
+
+
                 <div>
                     <button @click="uploadVid()"> Upload </button>   
                 </div>
 
+                <input type="checkbox" name="checkbox">I have read and agree to the terms and conditions<br>
+
                 <div>
-                    <button type="button" @click=(this.submitCharacter(this.props.productListSize))> Submit </button>
+                    <button type="button" @click=this.submitCharacter(this.props.productListSize)> Submit </button>
                 </div>
+
 
             </div>
           </div>
@@ -78,13 +130,20 @@ export default {
     })
   },
   methods: {
+    mapStateToProps(state) {
+      return {
+          productListSize: state.get("productList").toJS().length,
+          categories: state.get("categories").toJS()
+      };
+    },
     uploadVid() {
       console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
         storeTo: {
         location: 's3',
-        access: 'public'
+        access: 'public',
+        accept: 'video/*'
       },
         onUploadDone: (res) => console.log(res),
       };
