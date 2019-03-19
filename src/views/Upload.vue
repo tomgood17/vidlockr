@@ -44,60 +44,55 @@
             <div className="panel-heading">
 
 
-								<form name="product-form" id="product-form" noValidate>
-									<div className="form-group">
-										<label htmlFor="name">Title</label>
-										<input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
-									</div>
+			  <form name="product-form" id="product-form" noValidate>
+				<div className="form-group">
+				  <label htmlFor="name">Title</label>
+				  <input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
+				  </div>
 									
-									<div className="form-group">
-										<label htmlFor="description">Description</label>
-										<input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
-									</div>
+					<div className="form-group">
+					  <label htmlFor="description">Description</label>
+					  <input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
+					</div>
 
-                                    <div className="form-group">
-										<label htmlFor="description">Tags</label>
-										<input id="description" type="text" className="form-control" placeholder="Enter the video tags" required/>
-									</div>
+                    <div className="form-group">
+					  <label htmlFor="description">Tags</label>
+					  <input id="description" type="text" className="form-control" placeholder="Enter the video tags" required/>
+					</div>
 
-                                    <div className="form-group">
-										<label htmlFor="description">Location</label>
-										<input id="description" type="text" className="form-control" placeholder="Enter the video location" required/>
-									</div>
-
-                                    
-
-
-									<div className="form-group">
-                                        <label htmlFor="description">Categories</label>
-										<select>
-                                          <optgroup label="Categories">
-                                            <option value="sport">Sport</option>
-                                            <option value="politics">Politics & Business</option>
-                                            <option value="celebrity">Celebrity</option>
-                                            <option value="food">Food & Recipes</option>
-                                            <option value="animals">Animals</option>
-                                            <option value="travel">Travel</option>
-                                            <option value="entertainment">Entertainment & Arts</option>
-                                            <option value="science">Science & Technology</option>
-                                            <option value="crime">Crime & Accidents</option>
-                                            <option value="charity">Charity & Causes</option>
-                                            <option value="disaster">Conflict & Disaster</option>
-                                            <option value="health">Health & Education</option>
-                                            <option value="weather">Weather & Nature</option>
-                                            <option value="other">Other</option>
-                                          </optgroup>
-                                        </select>
-									</div> 
-                                </form>   
-
+                    <div className="form-group">
+				      <label htmlFor="description">Location</label>
+					  <input id="description" type="text" className="form-control" placeholder="Enter the video location" required/>
+					</div>          
+									
+                    <div className="form-group">
+                      <label>Categories</label>
+		  			  <select id="category" onchange="setCategory()">
+                        <option selected disabled>Select Category</option>
+                        <option value="sport">Sport</option>
+                        <option value="politics">Politics & Business</option>
+                        <option value="celebrity">Celebrity</option>
+                        <option value="food">Food & Recipes</option>
+                        <option value="animals">Animals</option>
+                        <option value="travel">Travel</option>
+                        <option value="entertainment">Entertainment & Arts</option>
+                        <option value="science">Science & Technology</option>
+                        <option value="crime">Crime & Accidents</option>
+                        <option value="charity">Charity & Causes</option>
+                        <option value="disaster">Conflict & Disaster</option>
+                        <option value="health">Health & Education</option>
+                        <option value="weather">Weather & Nature</option>
+                        <option value="other">Other</option>
+                      </select>
+					</div> 
+              </form>   
 
 
                 <div>
                     <button @click="uploadVid()"> Upload </button>   
                 </div>
 
-                <input type="checkbox" name="checkbox">I have read and agreed to the terms and conditions<br>
+                <input type="checkbox" name="checkbox"> I have read and agreed to the terms and conditions<br>
 
                 <div>
                     <button type="button" @click=this.submitCharacter(this.props.productListSize)> Submit </button>
@@ -116,8 +111,11 @@
 </div>
 </template>
 
+
+
 <script>
 import axios from 'axios'
+
 
 export default {
   data () {
@@ -125,6 +123,7 @@ export default {
       stories: []
     }
   },
+  
   mounted() {
     axios.get('https://api.storyblok.com/v1/cdn/stories?starts_with=tp&excluding_fields=body&excluding_ids=48471,48547,60491&token=dtONJHwmxhdJOwKxyjlqAgtt').then((res) => {
       this.stories = res.data.stories
@@ -141,11 +140,11 @@ export default {
       console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
+        accept: 'video/*',
         storeTo: {
-        location: 's3',
-        access: 'public',
-        accept: 'video/*'
-      },
+          location: 's3',
+          access: 'public'
+        },
         onUploadDone: (res) => console.log(res),
       };
       client.picker(options).open();
@@ -174,6 +173,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
