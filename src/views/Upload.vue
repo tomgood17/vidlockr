@@ -1,3 +1,4 @@
+
 <template>
   <div class="dashboard">
     <nav class="navbar navbar-light bg-light">
@@ -49,7 +50,7 @@
 				  <label htmlFor="name">Title</label>
 				  <input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
 				  </div>
-									
+
 					<div className="form-group">
 					  <label htmlFor="description">Description</label>
 					  <input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
@@ -140,12 +141,30 @@ export default {
       console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
+<<<<<<< HEAD
         fromSources: ["local_file_system","facebook","instagram","googledrive","dropbox","onedrive","clouddrive"],
         accept: ["video/*"],
         maxSize: 1610612736,
         storeTo: {
         location: 's3',
         access: 'public'
+=======
+        fromSources: [
+            "local_file_system",
+            "facebook",
+            "instagram",
+            "googledrive",
+            "dropbox",
+            "onedrive",
+            "clouddrive"
+        ],
+        accept: "video/*",
+        maxFiles: 1,
+        maxSize: 1610612736,
+        storeTo: {
+          location: 's3',
+          access: 'public'
+>>>>>>> 72eb2b298a1f2e49441d87feca28fdd3af8840f0
       },
         onUploadDone: (res) => console.log(res),
       };
