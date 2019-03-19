@@ -1,3 +1,4 @@
+
 <template>
   <div class="dashboard">
     <nav class="navbar navbar-light bg-light">
@@ -49,7 +50,7 @@
 				  <label htmlFor="name">Title</label>
 				  <input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
 				  </div>
-									
+
 					<div className="form-group">
 					  <label htmlFor="description">Description</label>
 					  <input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
@@ -141,9 +142,11 @@ export default {
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
         accept: 'video/*',
+        maxFiles: 1,
         storeTo: {
           location: 's3',
           access: 'public'
+          
         },
         onUploadDone: (res) => console.log(res),
       };
