@@ -16,9 +16,28 @@
     <script src="//static.filestackapi.com/filestack-js/1.x.x/filestack.min.js"></script>
     <script>
         var cat;
-          function setCategory(){
-            cat = document.getElementById('category').value;
-            console.log(cat)
+        var title;
+        var valid;
+          function setCategory(){              
+                console.log('valid category')
+                cat = document.getElementById('category').value;
+                console.log(cat)
+          }
+          function setTitle(){
+            title = document.getElementById('name').value;
+            console.log(title)
+          }
+          function setDescription() {
+            description = document.getElementById('description').value;
+            console.log(description)
+          }
+          function setTags() {
+            tags = document.getElementById('tags').value;
+            console.log(tags)
+          }
+          function setLocations() {
+            locations = document.getElementById('locations').value;
+            console.log(locations)
           }
         </script>
 

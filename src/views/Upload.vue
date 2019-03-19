@@ -48,22 +48,22 @@
 			  <form name="product-form" id="product-form" noValidate>
 				<div className="form-group">
 				  <label htmlFor="name">Title</label>
-				  <input id="name" type="text" className="form-control" placeholder="Enter the video title" required/>
+				  <input id="name" onchange="setTitle()" type="text" className="form-control" placeholder="Enter the video title" required/>
 				  </div>
 
 					<div className="form-group">
 					  <label htmlFor="description">Description</label>
-					  <input id="description" type="text" className="form-control" placeholder="Enter the video description" required/>
+					  <input id="description" onchange="setDescription()" type="text" className="form-control" placeholder="Enter the video description" required/>
 					</div>
 
                     <div className="form-group">
-					  <label htmlFor="description">Tags</label>
-					  <input id="description" type="text" className="form-control" placeholder="Enter the video tags" required/>
+					  <label htmlFor="tags">Tags</label>
+					  <input id="tags" onchange="setTags()" type="text" className="form-control" placeholder="Enter the video tags" required/>
 					</div>
 
                     <div className="form-group">
-				      <label htmlFor="description">Location</label>
-					  <input id="description" type="text" className="form-control" placeholder="Enter the video location" required/>
+				      <label htmlFor="location">Location</label>
+					  <input id="locations" onchange="setLocations()" type="text" className="form-control" placeholder="Enter the video location" required/>
 					</div>          
 									
                     <div className="form-group">
@@ -156,8 +156,7 @@ export default {
         storeTo: {
           location: 's3',
           access: 'public',
-          filename: '12345',
-          path: cat + '/'
+          path: cat + '/' + title,
       },
         onUploadDone: (res) => console.log(res),
       };
