@@ -141,10 +141,12 @@ export default {
       console.log('upload button pressed');
       const client = filestack.init('A36wTBVGBS1iCyxE9FLODz');
       const options = {
+        fromSources: ["local_file_system","facebook","instagram","googledrive","dropbox","onedrive","clouddrive"],
+        accept: ["video/*"],
+        maxSize: 1610612736,
         storeTo: {
         location: 's3',
-        access: 'public',
-        accept: 'video/*'
+        access: 'public'
       },
         onUploadDone: (res) => console.log(res),
       };
